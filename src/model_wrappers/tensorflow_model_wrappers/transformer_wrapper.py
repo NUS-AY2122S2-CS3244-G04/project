@@ -69,20 +69,6 @@ class TransformerWrapper(NumpyTensorFlowWrapper):
                 patience=EARLY_STOPPING_PATIENCE,
                 mode='max',
                 restore_best_weights=True
-            ),
-            tf.keras.callbacks.EarlyStopping(
-                monitor='val_f1_3',
-                min_delta=1e-4,
-                patience=EARLY_STOPPING_PATIENCE,
-                mode='max',
-                restore_best_weights=True
-            ),
-            tf.keras.callbacks.EarlyStopping(
-                monitor='val_f1_4',
-                min_delta=1e-4,
-                patience=EARLY_STOPPING_PATIENCE,
-                mode='max',
-                restore_best_weights=True
             )
         ])
         return callbacks

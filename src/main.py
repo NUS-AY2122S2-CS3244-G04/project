@@ -8,7 +8,7 @@ from model_wrappers import wrappers
 from data import datasets
 
 def main(args):
-    model = wrappers[args.model]()
+    model = wrappers[args.model_wrapper]()
     dataset = datasets[args.dataset]()
     model.set_data(dataset)
     model.set_load_filepath(args.load_filepath)

@@ -23,7 +23,7 @@ class CsrMatrixTensorFlowWrapper(TensorFlowWrapper):
         text_sparse_matrix = text_sparse_matrix.tocoo()
         indices = np.mat([text_sparse_matrix.row, text_sparse_matrix.col]).transpose()
         text_tensor = tf.sparse.reorder(tf.SparseTensor(indices, text_sparse_matrix.data, text_sparse_matrix.shape))
-        label_tensor = tf.one_hot(raw_label_arr, 4)
+        label_tensor = tf.one_hot(raw_label_arr, 2)
         ds = tf.data.Dataset.from_tensor_slices((text_tensor, label_tensor))
         ds = ds.map(lambda t, l: (tf.sparse.to_dense(t), l))
         return ds

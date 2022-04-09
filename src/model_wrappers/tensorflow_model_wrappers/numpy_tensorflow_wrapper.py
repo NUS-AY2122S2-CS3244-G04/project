@@ -21,7 +21,7 @@ class NumpyTensorFlowWrapper(TensorFlowWrapper):
         preprocessor = self._get_preprocessor()
         text_arr = preprocessor(raw_text_arr)
         text_tensor = tf.ragged.constant(text_arr)
-        label_tensor = tf.one_hot(raw_label_arr, 4)
+        label_tensor = tf.one_hot(raw_label_arr, 2)
         ds = tf.data.Dataset.from_tensor_slices((text_tensor, label_tensor))
         ds = ds.map(lambda t, l: (tf.convert_to_tensor(t), l))
         return ds
