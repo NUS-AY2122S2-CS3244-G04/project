@@ -21,4 +21,5 @@ class NltkTokenStopLemma(Preprocessor):
         raw_tokens = word_tokenize(raw_text)
         tokens = [wnl.lemmatize(raw_token) for raw_token in raw_tokens if raw_token not in stopwords]
         text = ' '.join(tokens)
+        text = text.encode('utf-8')
         return text
