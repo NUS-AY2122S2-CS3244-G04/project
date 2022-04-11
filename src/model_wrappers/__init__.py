@@ -8,6 +8,8 @@ from model_wrappers.tensorflow_model_wrappers.residual_rnn_wrapper import Residu
 from model_wrappers.tensorflow_model_wrappers.nltk_rnn_wrapper import NltkRnnWrapper
 from model_wrappers.tensorflow_model_wrappers.nltk_tfidf_wrapper import NltkTfidfWrapper
 from model_wrappers.tensorflow_model_wrappers.transformer_wrapper import TransformerWrapper
+from model_wrappers.tensorflow_model_wrappers.isaac_rnn_wrapper import IsaacRnnWrapper
+from model_wrappers.tensorflow_model_wrappers.isaac_transformer_wrapper import IsaacTransformerWrapper
 
 wrappers = {
     'sequential_rnn': SequentialRnnWrapper,
@@ -15,5 +17,7 @@ wrappers = {
     'residual_rnn': ResidualRnnWrapper,
     'nltk_rnn': NltkRnnWrapper,
     'nltk_tfidf': NltkTfidfWrapper,
-    'transformer': TransformerWrapper
+    'transformer': TransformerWrapper,
+    'isaac_rnn': IsaacRnnWrapper,
+    'isaac_transformer': IsaacTransformerWrapper
 }
