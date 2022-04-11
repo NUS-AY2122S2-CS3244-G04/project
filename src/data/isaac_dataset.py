@@ -7,5 +7,5 @@ from data import BuptGammaWithValidation
 
 class IsaacDataset(Combination):
     def __init__(self, datasets=[]) -> None:
-        datasets.extend([BuzzFeed(), FaKes(), FakeAndTrue(), Politifact(), BuptGammaWithValidation()])
+        datasets.extend([BuzzFeed(), FaKes(), FakeAndTrue(), Politifact()])
         super().__init__(datasets)
