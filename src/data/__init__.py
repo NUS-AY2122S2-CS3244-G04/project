@@ -6,6 +6,8 @@ from data.buzzfeed import BuzzFeed
 from data.fa_kes import FaKes
 from data.fake_and_true import FakeAndTrue
 from data.politifact import Politifact
+from data.combination import Combination
+from data.isaac_dataset import IsaacDataset
 
 datasets = {
     'bupt_gamma': BuptGamma,
@@ -13,5 +15,6 @@ datasets = {
     'buzzfeed': BuzzFeed,
     'fa_kes': FaKes,
     'fake_and_true': FakeAndTrue,
-    'politifact': Politifact
+    'politifact': Politifact,
+    'isaac_dataset': IsaacDataset
 }
