@@ -8,6 +8,8 @@ from data.fake_and_true import FakeAndTrue
 from data.politifact import Politifact
 from data.combination import Combination
 from data.isaac_dataset import IsaacDataset
+from data.janelle_dataset import JanelleDataset
+from data.janelle_tokenized_dataset import JanelleTokenizedDataset
 
 datasets = {
     'bupt_gamma': BuptGamma,
@@ -16,5 +18,7 @@ datasets = {
     'fa_kes': FaKes,
     'fake_and_true': FakeAndTrue,
     'politifact': Politifact,
-    'isaac_dataset': IsaacDataset
+    'isaac_dataset': IsaacDataset,
+    'janelle_dataset': JanelleDataset,
+    'janelle_tokenized_dataset': JanelleTokenizedDataset
 }
