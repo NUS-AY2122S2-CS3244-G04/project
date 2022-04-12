@@ -146,21 +146,7 @@ class TensorFlowWrapper(ModelWrapper):
         return DEFAULT_NUMBER_OF_EPOCHS
 
     def _get_callbacks(self) -> List[tf.keras.callbacks.Callback]:
-        callbacks = [
-            tf.keras.callbacks.EarlyStopping(
-                monitor='val_loss',
-                min_delta=1e-4,
-                patience=5,
-                mode='min',
-                restore_best_weights=True
-            ),
-            tf.keras.callbacks.ReduceLROnPlateau(
-                monitor='loss',
-                patience=2,
-                min_delta=1e-4,
-                mode='min'
-            )
-        ]
+        callbacks = []
         save_filepath = self.get_save_filepath()
         if save_filepath:
             cp_callback = tf.keras.callbacks.ModelCheckpoint(

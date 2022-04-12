@@ -34,7 +34,7 @@ class TransformerWrapper(NumpyTensorFlowWrapper):
         return model
 
     def _get_callbacks(self) -> List[tf.keras.callbacks.Callback]:
-        callbacks = []
+        callbacks = super()._get_callbacks()
         callbacks.extend([
             tf.keras.callbacks.ReduceLROnPlateau(
                 monitor='loss',
