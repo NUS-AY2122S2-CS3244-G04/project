@@ -8,9 +8,6 @@ from data import IsaacBuptGamma
 
 DIR = os.path.dirname(__file__)
 
-TEST_TRAINVAL_SPLIT_FRACTION = 0.2
-VAL_TRAIN_SPLIT_FRACTION = 0.2
-
 class SingaporeTest(IsaacBuptGamma):
     def __init__(self) -> None:
         super().__init__()
