@@ -17,7 +17,6 @@ class BuptGammaWithValidation(BuptGamma):
         train_df = pd.read_csv(os.path.join(DIR, '..', '..', 'Data', 'fulltrain.csv'), names=['label', 'text'])
         train_df.loc[train_df['label'] < 4, 'label'] = 1
         train_df.loc[train_df['label'] == 4, 'label'] = 0
-        train_df = train_df.sample(frac=1.0)
         val_df, train_df = self._split_stratified(train_df, VALIDATION_FRACTION, 'label')
         self._set_training_dataframe(train_df)
         self._set_validation_dataframe(val_df)
