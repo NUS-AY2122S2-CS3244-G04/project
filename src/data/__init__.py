@@ -10,8 +10,8 @@ from data.combination import Combination
 from data.isaac_dataset import IsaacDataset
 from data.janelle_dataset import JanelleDataset
 from data.janelle_tokenized_dataset import JanelleTokenizedDataset
-from data.singapore_test import SingaporeTest
 from data.isaac_bupt_gamma import IsaacBuptGamma
+from data.singapore_test import SingaporeTest
 
 datasets = {
     'bupt_gamma': BuptGamma,
@@ -23,6 +23,6 @@ datasets = {
     'isaac_dataset': IsaacDataset,
     'janelle_dataset': JanelleDataset,
     'janelle_tokenized_dataset': JanelleTokenizedDataset,
-    'singapore_test': SingaporeTest,
-    'isaac_bupt_gamma': IsaacBuptGamma
+    'isaac_bupt_gamma': IsaacBuptGamma,
+    'singapore_test': SingaporeTest
 }
