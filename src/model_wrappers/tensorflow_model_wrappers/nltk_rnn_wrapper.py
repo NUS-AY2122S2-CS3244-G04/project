@@ -9,6 +9,8 @@ from model_wrappers.tensorflow_model_wrappers.layers import EnhancedStackedRNN
 from model_wrappers.tensorflow_model_wrappers.metrics import F1Score
 
 NUM_EPOCHS = 128
+EARLY_STOPPING_PATIENCE = 10
+INITIAL_LEARNING_RATE = 1e-2
 
 EMBEDDING_DIM = 4
 NUM_RNN_UNITS = 4
@@ -24,10 +26,9 @@ class NltkRnnWrapper(NumpyTensorFlowWrapper):
         vocab_size = preprocessor.get_vocabulary_size()
         model = Model(vocab_size)
         model.build(tf.TensorShape([None, None]))
-        initial_learning_rate = 1e-2
         model.compile(
             loss=tf.keras.losses.CategoricalCrossentropy(),
-            optimizer=tf.keras.optimizers.Adam(learning_rate=initial_learning_rate),
+            optimizer=tf.keras.optimizers.Adam(learning_rate=INITIAL_LEARNING_RATE),
             metrics=['accuracy', F1Score(2)]
         )
         return model
@@ -35,31 +36,37 @@ class NltkRnnWrapper(NumpyTensorFlowWrapper):
     def _get_callbacks(self) -> List[tf.keras.callbacks.Callback]:
         callbacks = super()._get_callbacks()
         callbacks.extend([
-            tf.keras.callbacks.EarlyStopping(
-                monitor='f1_macro',
+            tf.keras.callbacks.ReduceLROnPlateau(
+                monitor='loss',
+                patience=2,
                 min_delta=1e-4,
-                patience=5,
+                mode='min'
+            ),
+            tf.keras.callbacks.EarlyStopping(
+                monitor='val_f1_macro',
+                min_delta=1e-4,
+                patience=EARLY_STOPPING_PATIENCE,
                 mode='max',
                 restore_best_weights=True
             ),
             tf.keras.callbacks.EarlyStopping(
-                monitor='f1_micro',
+                monitor='val_f1_micro',
                 min_delta=1e-4,
-                patience=5,
+                patience=EARLY_STOPPING_PATIENCE,
                 mode='max',
                 restore_best_weights=True
             ),
             tf.keras.callbacks.EarlyStopping(
-                monitor='f1_1',
+                monitor='val_f1_1',
                 min_delta=1e-4,
-                patience=5,
+                patience=EARLY_STOPPING_PATIENCE,
                 mode='max',
                 restore_best_weights=True
             ),
             tf.keras.callbacks.EarlyStopping(
-                monitor='f1_2',
+                monitor='val_f1_2',
                 min_delta=1e-4,
-                patience=5,
+                patience=EARLY_STOPPING_PATIENCE,
                 mode='max',
                 restore_best_weights=True
             )
@@ -74,7 +81,8 @@ class Model(tf.keras.Model):
         super().__init__(*args, **kwargs)
         self.embedding = tf.keras.layers.Embedding(
             vocab_size,
-            EMBEDDING_DIM
+            EMBEDDING_DIM,
+            mask_zero=True
         )
         self.rnn = EnhancedStackedRNN(
             lambda num_nodes, *lc_args, **lc_kwargs: tf.keras.layers.LSTM(
