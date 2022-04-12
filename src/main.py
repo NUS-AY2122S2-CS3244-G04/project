@@ -11,6 +11,7 @@ def main(args):
     model = wrappers[args.model_wrapper]()
     dataset = datasets[args.dataset]()
     model.set_data(dataset)
+    model.set_save_filepath(args.save_filepath)
     model.set_load_filepath(args.load_filepath)
     if args.mode in {'train', 'full'}:
         model.train()
