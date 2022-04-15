@@ -4,11 +4,11 @@ from typing import Tuple
 import numpy as np
 import pandas as pd
 
-from data import IsaacBuptGamma
+from data import KaggleBuptGamma
 
 DIR = os.path.dirname(__file__)
 
-class SingaporeTest(IsaacBuptGamma):
+class SingaporeTest(KaggleBuptGamma):
     def __init__(self) -> None:
         super().__init__()
         fake = pd.read_csv(os.path.join(DIR, '..', '..', 'Data', 'POFMAed.csv'), encoding='ISO-8859-1')
