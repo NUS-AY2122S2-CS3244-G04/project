@@ -3,7 +3,6 @@ from typing import List
 import tensorflow as tf
 
 from model_wrappers import NumpyTensorFlowWrapper
-from model_wrappers.preprocessing import NltkTokenStopLemmaSequence
 from model_wrappers.tensorflow_model_wrappers.layers import EnhancedMLP
 from model_wrappers.tensorflow_model_wrappers.metrics import F1Score
 
@@ -16,7 +15,7 @@ NUM_QUERY_KEY_NODES = 8
 NUM_ATTENTION_HEADS = 4
 NUM_OUTPUT_NODES = 2
 
-class TransformerWrapper(NumpyTensorFlowWrapper):
+class AttentionWrapper(NumpyTensorFlowWrapper):
     def __init__(self):
         super().__init__()
 

@@ -7,9 +7,9 @@ from model_wrappers.tensorflow_model_wrappers.subclassed_rnn_wrapper import Subc
 from model_wrappers.tensorflow_model_wrappers.residual_rnn_wrapper import ResidualRnnWrapper
 from model_wrappers.tensorflow_model_wrappers.nltk_rnn_wrapper import NltkRnnWrapper
 from model_wrappers.tensorflow_model_wrappers.nltk_tfidf_wrapper import NltkTfidfWrapper
-from model_wrappers.tensorflow_model_wrappers.transformer_wrapper import TransformerWrapper
+from model_wrappers.tensorflow_model_wrappers.attention_wrapper import AttentionWrapper
 from model_wrappers.tensorflow_model_wrappers.isaac_rnn_wrapper import IsaacRnnWrapper
-from model_wrappers.tensorflow_model_wrappers.isaac_transformer_wrapper import IsaacTransformerWrapper
+from model_wrappers.tensorflow_model_wrappers.isaac_attention_wrapper import IsaacAttentionWrapper
 
 wrappers = {
     'sequential_rnn': SequentialRnnWrapper,
@@ -17,7 +17,7 @@ wrappers = {
     'residual_rnn': ResidualRnnWrapper,
     'nltk_rnn': NltkRnnWrapper,
     'nltk_tfidf': NltkTfidfWrapper,
-    'transformer': TransformerWrapper,
+    'attention': AttentionWrapper,
     'isaac_rnn': IsaacRnnWrapper,
-    'isaac_transformer': IsaacTransformerWrapper
+    'isaac_attention': IsaacAttentionWrapper
 }

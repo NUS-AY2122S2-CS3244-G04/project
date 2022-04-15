@@ -16,7 +16,7 @@ NUM_QUERY_KEY_NODES = 8
 NUM_ATTENTION_HEADS = 4
 NUM_OUTPUT_NODES = 2
 
-class IsaacTransformerWrapper(NumpyTensorFlowWrapper):
+class IsaacAttentionWrapper(NumpyTensorFlowWrapper):
     def __init__(self):
         super().__init__()
         self._set_preprocessor(IsaacSequence())
